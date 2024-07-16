@@ -580,3 +580,110 @@ h3 {
 		}
 	}
 }
+
+/* New styles for UPS Supply Chain Solutions internship experience */
+
+.internship-experience {
+    background-color: var(--blue-100);
+    border-radius: 30px;
+    padding: 30px;
+    margin-top: 30px;
+}
+
+.internship-experience h2 {
+    color: var(--blue-800);
+    font-size: 48px;
+    text-align: left;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.internship-experience h3 {
+    color: var(--blue-800);
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.project {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.project h4 {
+    color: var(--blue-800);
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.project ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.project li {
+    margin-bottom: 5px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.project li::before {
+    content: "•";
+    color: var(--blue-400);
+    position: absolute;
+    left: 0;
+}
+
+#technologies ul, #achievements ul, #impact ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#technologies li, #achievements li, #impact li {
+    background-color: var(--yellow-100);
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+
+#cta {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--blue-800);
+    color: white;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#cta:hover {
+    background-color: var(--blue-400);
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .internship-experience {
+        padding: 20px;
+    }
+
+    .internship-experience h2 {
+        font-size: 36px;
+    }
+
+    .internship-experience h3 {
+        font-size: 20px;
+    }
+
+    .project h4 {
+        font-size: 18px;
+    }
+
+    #technologies li, #achievements li, #impact li {
+        font-size: 14px;
+    }
+}
