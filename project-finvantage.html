@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinVantage - HFT Algo Trading Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        .project-hero {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .project-nav {
+            padding: 1rem 0;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .project-content {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        .tech-stack-tags {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .project-img-large {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin: 2rem 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="project-nav">
+        <a href="./index.html" class="back-link">← Back to Portfolio</a>
+    </nav>
+    <main>
+        <section class="project-hero">
+            <h1>FinVantage</h1>
+            <p>Low-Latency Algorithmic Trading & Analytics Platform</p>
+            <div class="tech-stack-tags">
+                <span class="tech-tag">React (TypeScript)</span>
+                <span class="tech-tag">Go (Golang)</span>
+                <span class="tech-tag">gRPC</span>
+                <span class="tech-tag">TimescaleDB</span>
+                <span class="tech-tag">WebSocket</span>
+            </div>
+        </section>
+
+        <section class="project-content">
+            <img src="./imgs/finvantage-dashboard.png" alt="FinVantage Dashboard" class="project-img-large">
+
+            <h2>Overview</h2>
+            <p>FinVantage is a high-performance trading platform designed for executing algorithmic strategies in
+                volatile markets. It features a Go-based order matching engine capable of processing 10k orders/second
+                and a React frontend that visualizes market data with sub-50ms latency using WebSocket binary streams.
+            </p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>🚀 Ultra-Low Latency Engine</h3>
+                    <p>Core execution service written in Go handles order validation and routing with microsecond-level
+                        precision, communicating via gRPC for minimal overhead.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📊 Dynamic Strategy Backtesting</h3>
+                    <p>Allows traders to test strategies against 5TB+ of historical tick data stored in TimescaleDB,
+                        with results visualizing profitability and drawdowns in seconds.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📡 Real-Time Data Streaming</h3>
+                    <p>Built a custom WebSocket gateway that aggregates feeds from multiple exchanges, normalizes the
+                        data, and broadcasts diffs to connected clients efficiently.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📉 Risk Management Module</h3>
+                    <p>Real-time P&L monitoring with auto-kill switches that trigger if drawdown limits are breached,
+                        preventing catastrophic losses.</p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 3rem;">Technical Challenges & Solutions</h2>
+            <h3>Challenge: Visualization Lag</h3>
+            <p><strong>Solution:</strong> Rendering high-frequency tick updates caused browser lag. Implemented a
+                WebWorker-based data processing layer and throttled UI repaints to 60fps using `requestAnimationFrame`,
+                ensuring smooth charting even during market spikes.</p>
+
+            <h3>Challenge: Data Consistency</h3>
+            <p><strong>Solution:</strong> Used an event-sourcing pattern for the order book state. Reconstruction of the
+                state is possible at any point by replaying the event log, aiding in debugging and auditing tailored for
+                financial compliance.</p>
+
+        </section>
+    </main>
+    <footer>
+        <p style="text-align: center; color: #666; padding: 2rem;">&copy; 2025 Manas Mishra. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

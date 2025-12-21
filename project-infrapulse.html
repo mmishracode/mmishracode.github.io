@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfraPulse - Predictive DevOps Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        .project-hero {
+            background: linear-gradient(135deg, #0b3d0b 0%, #1e5128 100%);
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .project-nav {
+            padding: 1rem 0;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .project-content {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        .tech-stack-tags {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .project-img-large {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin: 2rem 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="project-nav">
+        <a href="./index.html" class="back-link">← Back to Portfolio</a>
+    </nav>
+    <main>
+        <section class="project-hero">
+            <h1>InfraPulse</h1>
+            <p>Predictive Operations & Kubernetes Health Analytics</p>
+            <div class="tech-stack-tags">
+                <span class="tech-tag">Vue.js 3</span>
+                <span class="tech-tag">NestJS</span>
+                <span class="tech-tag">Kubernetes API</span>
+                <span class="tech-tag">Prometheus</span>
+                <span class="tech-tag">Apache Kafka</span>
+            </div>
+        </section>
+
+        <section class="project-content">
+            <img src="./imgs/infrapulse-dashboard.png" alt="InfraPulse Dashboard" class="project-img-large">
+
+            <h2>Overview</h2>
+            <p>InfraPulse is an AIOps dashboard that provides real-time visibility into Kubernetes clusters. Going
+                beyond simple monitoring, it uses time-series forecasting to predict node failures and resource
+                exhaustion 30 minutes before they happen, triggering automated scaling policies.</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>🧠 Predictive Failure Analysis</h3>
+                    <p>LSTM-based machine learning models analyze CPU/Memory usage trends to forecast anomalies,
+                        reducing unplanned downtime by proactive alerting.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🕸️ Real-Time Cluster Visualization</h3>
+                    <p>A hexagonal visualization map of the entire cluster state, dynamically updating as pods spin up
+                        or down, powered by D3.js and WebSockets.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🤖 Auto-Remediation Scripts</h3>
+                    <p>Configurable rules engine that can automatically restart stuck pods, clear caches, or scale node
+                        pools when specific distress signals are detected.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔄 Event-Driven Architecture</h3>
+                    <p>Built on Apache Kafka to ingest millions of log lines per minute from distributed agents without
+                        bottlenecking the main dashboard performance.</p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 3rem;">Technical Challenges & Solutions</h2>
+            <h3>Challenge: Metrics Overload</h3>
+            <p><strong>Solution:</strong> Storing raw metrics for weeks was cost-prohibitive. Implemented a
+                "downsampling rollup" strategy in the time-series database to retain high precision for the last 24
+                hours and aggregated averages for long-term storage.</p>
+
+            <h3>Challenge: Agent Overhead</h3>
+            <p><strong>Solution:</strong> The monitoring sidecar agent was rewritten in Rust to ensure a memory
+                footprint under 50MB, ensuring the monitoring tool didn't become the resource hog itself.</p>
+
+        </section>
+    </main>
+    <footer>
+        <p style="text-align: center; color: #666; padding: 2rem;">&copy; 2025 Manas Mishra. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

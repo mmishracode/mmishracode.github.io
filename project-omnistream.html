@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniStream - Enterprise AI Knowledge Base</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        .project-hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .project-nav {
+            padding: 1rem 0;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .project-content {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        .tech-stack-tags {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .project-img-large {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin: 2rem 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="project-nav">
+        <a href="./index.html" class="back-link">← Back to Portfolio</a>
+    </nav>
+    <main>
+        <section class="project-hero">
+            <h1>OmniStream</h1>
+            <p>Enterprise-Grade AI Knowledge Base & RAG Platform</p>
+            <div class="tech-stack-tags">
+                <span class="tech-tag">Next.js 14</span>
+                <span class="tech-tag">Python (FastAPI)</span>
+                <span class="tech-tag">LangChain</span>
+                <span class="tech-tag">Pinecone</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">Docker</span>
+            </div>
+        </section>
+
+        <section class="project-content">
+            <img src="./imgs/omnistream-dashboard.png" alt="OmniStream Dashboard" class="project-img-large">
+
+            <h2>Overview</h2>
+            <p>OmniStream is a multi-tenant SaaS platform that unifies disparate organizational knowledge (Google Drive,
+                Notion, Slack, PDFs) into a single, queryable AI interface. It leverages a high-performance RAG
+                (Retrieval-Augmented Generation) pipeline to provide accurate, citations-backed answers to employee
+                queries.</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>🔍 Hybrid Search Architecture</h3>
+                    <p>Combined dense vector retrieval (Pinecone) with sparse keyword search (BM25) to achieve 40%
+                        higher accuracy than standard semantic search, specifically for technical jargon.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>⚡ Real-Time Indexing Pipeline</h3>
+                    <p>Built an event-driven ingestion engine using Celery and Redis that processes and indexes document
+                        updates from integrated sources within 5 seconds.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🛡️ Enterprise Security</h3>
+                    <p>Implemented document-level permissioning mirroring the source systems (ACLs), ensuring users only
+                        see answers generated from documents they have access to.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📈 Evaluation Framework</h3>
+                    <p>Integrated "Ragas" for automated evaluation of retrieval precision and generation faithfulness,
+                        maintaining a 92% adherence score.</p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 3rem;">Technical Challenges & Solutions</h2>
+            <h3>Challenge: Hallucinations on Numeric Data</h3>
+            <p><strong>Solution:</strong> Implemented a "Cite-and-Verify" post-processing step where the LLM is forced
+                to extract specific text snippets from the context to back up its claims. If a number cannot be traced
+                back to the source chunks, the answer is flagged.</p>
+
+            <h3>Challenge: Multi-Tenant Vector Isolation</h3>
+            <p><strong>Solution:</strong> Utilized Pinecone namespaces combined with metadata filtering to strictly
+                isolate customer data sharing the same index, reducing infrastructure costs by 60% compared to separate
+                indices.</p>
+
+        </section>
+    </main>
+    <footer>
+        <p style="text-align: center; color: #666; padding: 2rem;">&copy; 2025 Manas Mishra. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
